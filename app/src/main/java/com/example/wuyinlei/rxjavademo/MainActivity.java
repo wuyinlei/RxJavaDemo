@@ -76,17 +76,17 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onNext(Integer integer) {
-
+                                Log.d("MainActivity", "integer:" + integer);
                             }
 
                             @Override
                             public void onError(Throwable t) {
-
+                                Log.d("MainActivity", t.getMessage());
                             }
 
                             @Override
                             public void onComplete() {
-
+                                Log.d("MainActivity", "完成了");
                             }
                         });
 
