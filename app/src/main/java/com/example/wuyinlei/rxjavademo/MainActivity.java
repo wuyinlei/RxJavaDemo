@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onError(Throwable t) {
-
+                                Log.d("MainActivity", t.getMessage());
                             }
 
                             @Override
