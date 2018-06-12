@@ -59,6 +59,37 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                Flowable.create(new FlowableOnSubscribe<Integer>() {
+                    @Override
+                    public void subscribe(FlowableEmitter<Integer> e) {
+                        if (e.isCancelled()) {
+                            e.onNext(1);
+                            e.onComplete();
+                        }
+                    }
+                }, BackpressureStrategy.MISSING)
+                        .subscribe(new Subscriber<Integer>() {
+                            @Override
+                            public void onSubscribe(Subscription s) {
+                                s.request(1);
+                            }
+
+                            @Override
+                            public void onNext(Integer integer) {
+
+                            }
+
+                            @Override
+                            public void onError(Throwable t) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
+                            }
+                        });
+
 
 //                //对于上面的是不存在被压的
                 Flowable.create(new FlowableOnSubscribe<String>() {
